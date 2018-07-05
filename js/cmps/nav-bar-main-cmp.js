@@ -5,7 +5,7 @@ export default {
 			<router-link exact to="/">Home</router-link>
             <router-link to="/about">About</router-link>
             <router-link to="/note">Keep</router-link>
-            <router-link to="/mail">Mail</router-link>  
+            <router-link to="/email">Mail</router-link>  
     </nav>    
 
     </section>`
