@@ -1,17 +1,13 @@
-import appsusApp from './appsus-app-cmp.js'
 
 
 
 export default {
     template: `  
     <section>
-    <appsus-app></appsus-app>
-
+    <h1>Home-Page!</h1>
+        And let the magic begin!!
+            <router-link exact to="/keep">Keep</router-link>
+			<router-link to="/mail">Mail</router-link>
     </section>`
     ,
-
-    components: {
-        appsusApp
-    }
-
 }

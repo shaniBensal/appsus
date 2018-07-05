@@ -1,5 +1,5 @@
 import myRoutes from './routes.js'
-import appsusApp from './pages/appsus-app-cmp.js'
+import HomePage from './pages/home-page-cmp.js'
 import navBarMain from './cmps/nav-bar-main-cmp.js'
 
 
@@ -13,7 +13,7 @@ new Vue({
     data: {},
     created() { },
     components: {
-        appsusApp,
+        HomePage,
         navBarMain
     }
 });
