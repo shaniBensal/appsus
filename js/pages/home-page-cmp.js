@@ -1,6 +1,17 @@
+import appsusApp from './appsus-app-cmp.js'
+
+
+
 export default {
     template: `  
     <section>
-        hello
+    <appsus-app></appsus-app>
+
     </section>`
+    ,
+
+    components: {
+        appsusApp
+    }
+
 }

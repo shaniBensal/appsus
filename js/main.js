@@ -1,6 +1,6 @@
 import myRoutes from './routes.js'
 import appsusApp from './pages/appsus-app-cmp.js'
-import navBar from './cmps/nav-bar-cmp.js'
+import navBarMain from './cmps/nav-bar-main-cmp.js'
 
 
 Vue.use(VueRouter);
@@ -14,6 +14,6 @@ new Vue({
     created() { },
     components: {
         appsusApp,
-        navBar
+        navBarMain
     }
 });
