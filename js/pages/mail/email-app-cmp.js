@@ -1,5 +1,6 @@
 import emailService from '../../services/email-service.js'
 import emailList from '../../cmps/email-list-cmp.js'
+import emailDetails from '../../cmps/email-details-cmp.js'
 
 export default {
     template: `  
@@ -7,13 +8,15 @@ export default {
          <email-list :emails="emails"></email-list>
         </ul>
 
+        <email-details v-if = "selectedEmail"></email-details>
+
     </section>`
     ,
 
     data() {
         return {
             emails: [],
-            selectedEmail: null
+            selectedEmail: false,
 
         }
     },
@@ -23,12 +26,20 @@ export default {
             .then(emails => {
                 this.emails = emails;
                 console.log('Email app created!!', emails)
+                console.log(this.$route.params.id)
 
             })
     },
 
     computed: {
 
+
+    },
+
+    watch: {
+        '$route.params.id': function (id) {
+            this.selectedEmail = true
+        }
 
     },
 
@@ -50,11 +61,12 @@ export default {
 
 
     components: {
-
-        emailList
+        emailList,
+        emailDetails
 
 
     },
-
-
 }
+
+
+

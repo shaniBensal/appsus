@@ -12,7 +12,7 @@
 
 html {
     font-family: 'play', 'Times New Roman', Times, serif;
-    color: #626262;
+    color: #2E2532;
     font-size: 14px;
 }
 
@@ -27,7 +27,7 @@ img {
 
 a {
     text-decoration: none;
-    color: #f0f0f0;
+    /* color: #f0f0f0; */
 }
 
 .nav-bar-main a{
@@ -85,7 +85,7 @@ header {
 
 .router-link a{
     text-decoration: none;
-    color: #f0f0f0;
+    /* color: #f0f0f0; */
 }
 
 header h1 {

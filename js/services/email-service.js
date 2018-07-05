@@ -11,11 +11,9 @@ function getEmailById(emailId) {
 
 }
 
-
-
-
 export default {
     query,
+    getEmailById
 
 }
 
