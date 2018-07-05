@@ -1,0 +1,7 @@
+.email-app{
+    color: black;
+}
+
+.email-list li{
+    border-bottom: 1px solid black;
+}

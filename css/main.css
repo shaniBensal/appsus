@@ -3,20 +3,12 @@
 }
 
 
-/* Font Face */
+ /*Font Face */
 
-/* @font-face {
-    font-family: inco;
-    src: url('../fonts/inco/Inconsolata-Regular.ttf');
-}
 @font-face {
-    font-family: play;
-    src: url('../fonts/play/PlayfairDisplay-Regular.ttf');
+    font-family: 'lato';
+    src: url('../fonts/lato/Lato-Black.ttf');
 }
-@font-face {
-    font-family: ubuntu;
-    src: url('../fonts/ubuntu/Ubuntu-Light.ttf');
-} */
 
 html {
     font-family: 'play', 'Times New Roman', Times, serif;
@@ -35,7 +27,12 @@ img {
 
 a {
     text-decoration: none;
-    color: #000;
+    color: #f0f0f0;
+}
+
+.nav-bar-main a{
+    font-size: 30px;
+    margin: 20px 0
 }
 
 /* Helpers */
@@ -80,8 +77,15 @@ a {
 /* Header */
 
 header {
-    height: 170px;
-    background: #626262;
+    height: 100px;
+    background: #2E2532;
+    border-bottom: 5px solid #9E4770
+
+}
+
+.router-link a{
+    text-decoration: none;
+    color: #f0f0f0;
 }
 
 header h1 {
