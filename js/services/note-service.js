@@ -3,6 +3,11 @@ function query() {
 	return Promise.resolve(notes);
 }
 
+function getNoteById(id){
+    var note = notes.find(note => note.id === id);
+    return note;
+}
+
 var notes = [
     {
         id: 'Q8Q9Lsd03BD',
@@ -22,5 +27,6 @@ var notes = [
 ]
 
 export default {
-    query
+    query,
+    getNoteById
 }

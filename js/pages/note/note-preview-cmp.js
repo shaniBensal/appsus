@@ -4,7 +4,6 @@ export default {
     template: `
     <section class="note-prev clean-list">
     <router-link :to="'/note/'+note.id"> 
-    <button>X</button>
         <li v-if="note.type ==='txt'">
             {{note.data}}
         </li>
