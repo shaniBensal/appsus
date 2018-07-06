@@ -9,9 +9,7 @@ export default {
     </section>
     `,
     data() {
-        return {
-            notes: []
-        }
+        return {}
     },
     methods: {
     },

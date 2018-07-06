@@ -5,6 +5,7 @@ import emailDetails from '../../cmps/email-details-cmp.js'
 export default {
     template: `  
     <section class = "email-app">
+        8
          <email-list :emails="emails"></email-list>
 
         <email-details v-bind:email ="selectedEmail" v-if = "selectedEmail"
