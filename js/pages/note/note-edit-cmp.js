@@ -29,7 +29,7 @@ export default {
             </div>
         </div>
         </div>
-                <button type="submit" ref="myBtn" @click.prevent="saveNote">Save</button>
+                <button type="submit" @click.prevent="saveNote">Save</button>
             </form>
     </section>
     `,
