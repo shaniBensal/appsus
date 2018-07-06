@@ -1,7 +1,8 @@
+
+
 * {
     box-sizing: border-box;
 }
-
 
  /*Font Face */
 
@@ -191,3 +192,8 @@ ul.main-menu.open {
     width: 50px;
 }
 
+.newImg{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}

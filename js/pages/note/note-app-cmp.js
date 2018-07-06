@@ -3,55 +3,63 @@ import noteService from '../../services/note-service.js';
 import noteList from './note-list-cmp.js'
 import noteAdd from './note-add-cmp.js'
 import noteFilter from './note-filter-cmp.js'
+import noteDetails from '../../pages/note/note-details-cmp.js'
 
 export default {
-    template:`
+    template: `
     <section class="note-app">
         <h1>Note App!</h1>
-        <note-add></note-add>
-        <note-filter></note-filter>
-        <note-list v-bind:notes="notes" v-on:noteSelected="editSelectedNote"></note-list>
+
+        <note-add v-if="displayMode === 'list'"></note-add>
+        <note-filter v-if="displayMode === 'list'"></note-filter>
+        
+        <note-details v-if="displayMode === 'details'" 
+                     v-bind:note="selectedNote" 
+                     v-on:back="setSelectedNote(null)">
+        </note-details>
+
+        <note-list v-if="displayMode === 'list'"
+                   v-bind:notes="notes" 
+                   v-on:delete-note="deleteNote"
+                   v-on:select-note="setSelectedNote">
+        </note-list>
+
     </section>
     `,
     data() {
         return {
             notes: [],
-            selectedNote:null,
-            noteToEdit: null,
-            displayMode:'list',
-            // currView : 'user-profile',
+            selectedNote: null,
+            displayMode: 'list'
         }
     },
     created() {
-		noteService.query()
-			.then(notes => {
-                this.notes = notes;                
-			})
-	},
+        noteService.query()
+            .then(notes => {
+                this.notes = notes;
+            })
+    },
     methods: {
-        editSelectedNote(note) {            
-            this.noteToEdit = note;
-            this.displayMode = 'edit'
-        },
+       
         saveNote(note) {
             noteService.saveNote(note)
-            console.log('Cars: ', this.note);
             this.displayMode = 'list';
             this.noteToEdit = null;
         },
+
         deleteNote(noteIdx) {
-            console.log('Parent Deleting', noteIdx);
             noteService.removeNote(noteIdx)
         },
+
         setSelectedNote(note) {
-            console.log('Parent got a selected car from car-list:', note);
             this.selectedNote = note;
-            this.displayMode = (note)? 'details' : 'list';  
-        },
+            this.displayMode = 'details';
+        }
     },
     components: {
         noteList,
         noteAdd,
-        noteFilter
+        noteFilter,
+        noteDetails
     }
 }

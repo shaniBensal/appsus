@@ -8,7 +8,7 @@ export default {
     <ul>
         <div v-for="(note, idx) in notes">
         <button v-on:click.stop="deleteNote(idx)">X</button>
-            <note-preview v-bind:note="note" v-on:click.native="selectedNote(note.id)"></note-preview>
+            <note-preview v-bind:note="note" v-on:click.native="selectedNote(note)"></note-preview>
         </div>
     </ul>
     </section>
@@ -17,12 +17,12 @@ export default {
         return {}
     },
     methods: {
-        selectedNote(noteId) {
-            this.$emit('noteSelected', noteId);
+        selectedNote(note) {            
+            this.$emit('select-note', note);
         },
         deleteNote(idx) {
-            this.$emit('note-deleted', idx)
-        },
+            this.$emit('delete-note', idx)
+        }
     },
     components: {
         notePreview
