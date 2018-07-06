@@ -11,9 +11,36 @@ function getEmailById(emailId) {
 
 }
 
+function getEmailIdxById(emailId) {
+    var emailIdx = emails.findIndex(currEmail => currEmail.id === emailId)
+}
+
+
+function removeEmail(emailId) {
+    console.log('deleting email')
+    // return Promise.resolve();
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            var emailIdx = getEmailIdxById(emailId)
+            emails.splice(emailIdx, 1);
+            resolve()
+        }, 2000);
+    });
+}
+
+
+function setReadStatus(email) {
+    console.log('email to change status', email)
+    email.isRead = !email.isRead;
+    return Promise.resolve(email);
+}
+
 export default {
     query,
-    getEmailById
+    getEmailById,
+    setReadStatus,
+    removeEmail
+
 
 }
 

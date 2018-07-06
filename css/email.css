@@ -1,7 +1,25 @@
+nav .router-link-active{
+    color: white;
+}
+
+nav a{
+    color: white;
+}
+
 .email-app{
+    color: black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.email-app a{
     color: black;
 }
 
 .email-list li{
     border-bottom: 1px solid black;
+}
+
+.email-unread{
+    font-weight: bold;
 }

@@ -6,9 +6,10 @@ export default {
     template: `  
     <section class = "email-app">
          <email-list :emails="emails"></email-list>
-        </ul>
 
-        <email-details v-if = "selectedEmail"></email-details>
+        <email-details v-bind:email ="selectedEmail" v-if = "selectedEmail"
+        @deleted = "onDelete">
+        </email-details>
 
     </section>`
     ,
@@ -16,7 +17,7 @@ export default {
     data() {
         return {
             emails: [],
-            selectedEmail: false,
+            selectedEmail: null,
 
         }
     },
@@ -25,10 +26,13 @@ export default {
         emailService.query()
             .then(emails => {
                 this.emails = emails;
+                this.selectedEmail = emails[0]
+                this.$router.push(`/email/${emails[0].id}`)
                 console.log('Email app created!!', emails)
-                console.log(this.$route.params.id)
+                console.log('parans', this.$route.params)
 
             })
+
     },
 
     computed: {
@@ -38,9 +42,12 @@ export default {
 
     watch: {
         '$route.params.id': function (id) {
-            this.selectedEmail = true
+            emailService.getEmailById(id)
+                .then(email => {
+                    this.selectedEmail = email
+                })
         }
-
+     
     },
 
     methods: {
@@ -48,7 +55,11 @@ export default {
         // setSelectedEmail(emailId) {
 
         //     this.$router.push(`/email/${emailId}`);
-
+        onDelete(){
+            console.log('deleting email', this.selectedEmail)
+            emailService.removeEmail(this.selectedEmail.id)
+            this.$router.push(`/email`)
+        }
 
     },
 

@@ -8,7 +8,7 @@ export default {
     template: `  
     <section class = "email-list">
          <ul class="clean-list flex column">
-             <li v-for = "(email,idx) in emails">
+             <li v-for = "(email,idx) in emails" :key="email.id">
                   <email-preview :email = "email"></email-preview>
             </li>
         </ul>

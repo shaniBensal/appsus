@@ -3,13 +3,16 @@ import emailService from '../services/email-service.js'
 
 export default {
 
+    props: ['email'],
+
     template: `
         <section class="email-details">
 
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati eaque ex maxime ea ipsam quam non nostrum laborum itaque, quos illum saepe,
-     doloribus incidunt unde perferendis possimus! Ab, praesentium doloribus?</p>
-     {{email}}
+    <h2>{{email.subject}}</h2>
+    <h6>{{dateSent}}</h6>
+    <p>{{email.content}}</p>
+    <button @click = "deleteEmail">delete</button>
+    
         </section>
     
     `,
@@ -17,22 +20,43 @@ export default {
 
     data() {
         return {
-            email: null,
-    
+            // email: null,
+            // dateSent: null
+
         }
     },
 
     created() {
-        console.log(this.$route.params.id)
-        this.loadEmail()
+        // emailService.getEmailByIdx(0)
+        //     .then(email => this.email = email)
+        // this.loadEmail()
     },
 
     methods: {
-        loadEmail() {
-        	emailService.getEmailById(this.$route.params.id)
-        	.then(email => this.email = email)
+        // loadEmail() {
+        //     emailService.getEmailById(this.$route.params.id)
+        //         .then(email => this.email = email)
+        // },
+
+        deleteEmail(){
+            this.$emit('deleted', this.email.id)
         },
+
+       
     },
+
+    watch: {
+        // '$route.params.id': function (id) {
+        //     this.loadEmail()
+        // }
+    },
+
+    computed: {
+        dateSent: function () {
+            return moment.unix(this.email.dateSent).format("DD-MM-YYYY HH:mm:ss");
+
+        },
+    }
 
 
 

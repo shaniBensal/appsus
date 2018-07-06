@@ -6,12 +6,12 @@
  /*Font Face */
 
 @font-face {
-    font-family: 'lato';
-    src: url('../fonts/lato/Lato-Black.ttf');
+    font-family: 'quest';
+    src: url('../fonts/Questrial-Regular.ttf');
 }
 
 html {
-    font-family: 'play', 'Times New Roman', Times, serif;
+    font-family: 'quest', 'Times New Roman', Times, serif;
     color: #2E2532;
     font-size: 14px;
 }
@@ -32,8 +32,15 @@ a {
 
 .nav-bar-main a{
     font-size: 30px;
-    margin: 20px 0
+    margin: 20px 0;
+    color: white;
 }
+
+.nav-bar-main .router-link-active{
+    color: #9E4770;
+}
+
+
 
 /* Helpers */
 
