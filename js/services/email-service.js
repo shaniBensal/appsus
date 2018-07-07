@@ -1,4 +1,6 @@
 
+var gcounter = 0
+
 function query() {
     return Promise.resolve(emails);
 }
@@ -29,19 +31,32 @@ function removeEmail(emailId) {
 }
 
 
-function setReadStatus(email) {
-    console.log('email to change status', email)
-    email.isRead = !email.isRead;
-    return Promise.resolve(email);
+function setReadStatus(emailId) {
+    return getEmailById(emailId)
+        .then(email => {
+            email.isRead = !email.isRead;
+            console.log('bbbbbbbbb', email)
+            return Promise.resolve(email);
+
+        })
+}
+
+function countUnreadEmails() {
+    var unreadEmails = emails.filter(email => {
+        return email.isRead
+    })
+
+
+    console.log('unread', unreadEmails.length)
+    return unreadEmails.length
 }
 
 export default {
     query,
     getEmailById,
     setReadStatus,
-    removeEmail
-
-
+    removeEmail,
+    countUnreadEmails
 }
 
 

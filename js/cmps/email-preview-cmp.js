@@ -47,15 +47,19 @@ export default {
     methods: {
         onReadEmail() {
             if (this.isRead) return;
-            emailService.setReadStatus(this.email)
-                .then(() => this.isRead = this.email.isRead)
+            emailService.setReadStatus(this.email.id)
+                .then(email=> this.isRead = this.email.isRead)
+                
+                if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope'
+                else this.$refs.myMark.classList = 'fas fa-envelope-open'
+    
         
         },
 
         toggleMarkEmail() {
-            emailService.setReadStatus(this.email)
-                .then(() => this.isRead = this.email.isRead)
-            console.log(this.$refs)
+            emailService.setReadStatus(this.email.id)
+                .then(email => this.isRead = this.email.isRead)
+         
             if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope'
             else this.$refs.myMark.classList = 'fas fa-envelope-open'
 

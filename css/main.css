@@ -96,13 +96,19 @@ header {
     /* color: #f0f0f0; */
 }
 
-header h1 {
+.home-page h1 {
     /* font-family: 'inco', 'Courier New', Courier, monospace; */
     font-weight: normal;
     margin: 0;
     font-size: 30px;
     text-transform: uppercase;
     letter-spacing: 7px;
+    margin: 20px;
+}
+
+.links{
+    width: 80%;
+    margin: 50px 0;
 }
 
 header .main-menu a {
@@ -111,6 +117,10 @@ header .main-menu a {
 }
 
 /* Main */
+
+.home-page img{
+    width: 50%;
+}
 
 main .blog-item {
     flex: 0 0 100%;
@@ -128,7 +138,7 @@ footer {
     align-items: center;
 }
 
-@media (min-width: 830px) {
+/* @media (min-width: 830px) {
     header .main-menu li:not(:last-child) {
         margin-right: 100px;
     }
@@ -195,7 +205,7 @@ ul.main-menu.open {
 
 
 /* notes */
-.thumb-photo{
+/* .thumb-photo{
     width: 50px;
 }
 
@@ -203,4 +213,4 @@ ul.main-menu.open {
     width: 100px;
     height: 100px;
     background-color: aqua;
-}
+} */ 
