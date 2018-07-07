@@ -7,14 +7,14 @@ export default {
         <div class="links">
           <ul class="main flex align-center clean-list">
             <li>
-           
+                Save your thoughts
                  <router-link exact to="/keep">
                      <img src="img/notes.png"/>
                      
                  </router-link>
             </li>
             <li>
-           
+                Manage Your Emails
                  <router-link to="/email">
                       <img src="img/mail.jpg"/>
                      

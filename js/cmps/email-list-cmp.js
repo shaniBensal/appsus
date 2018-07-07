@@ -1,6 +1,6 @@
 import emailService from '../services/email-service.js'
 import emailPreview from '../cmps/email-preview-cmp.js'
-import emailStatus from '../cmps/email-status-cmp.js'
+
 
 export default {
 
@@ -11,10 +11,11 @@ export default {
          <ul class="clean-list flex column">
              <li v-for = "(email,idx) in emails" :key="email.id">
                   <email-preview :email = "email"></email-preview>
+                  <button @click = "deleteEmail(idx)">
+                       <i class="fas fa-trash-alt"></i>
+                  </button>
             </li>
         </ul>
-
-        <emailStatus :emails = "emails"></emailStatus>
 
     </section>`
     ,
@@ -37,21 +38,16 @@ export default {
     },
 
     methods: {
-
-
-    },
-
-    setFilter(filterBy) {
-        this.filter = filterBy;
+        deleteEmail(emailIdx){
+            this.$emit('deleted', emailIdx)
+        },
 
     },
-
-
 
 
     components: {
         emailPreview,
-        emailStatus
+        // emailStatus
     },
 
 

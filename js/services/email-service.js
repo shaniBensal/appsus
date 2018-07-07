@@ -1,9 +1,15 @@
 
-var gcounter = 0
+import utils from '../services/utils.js'
 
 function query() {
+    var emailsFromStorage = utils.loadFromStorage('EMAILS');
+    if (emailsFromStorage) {
+        emails = emailsFromStorage;
+    }
     return Promise.resolve(emails);
 }
+
+
 
 
 function getEmailById(emailId) {
@@ -25,9 +31,31 @@ function removeEmail(emailId) {
         setTimeout(() => {
             var emailIdx = getEmailIdxById(emailId)
             emails.splice(emailIdx, 1);
+            utils.saveToStorage('EMAILS' , emails)
             resolve()
         }, 2000);
+
     });
+}
+
+function emptyEmail() {
+    return {
+        id: null,
+        subject: null,
+        content: null,
+        isRead: false,
+        dateSent: null
+    }
+}
+
+function addNewEmail(newEmail) {
+    console.log(newEmail)
+    newEmail.dateSent = Date.now()
+    newEmail.isRead = false
+    newEmail.id = utils.makeId()
+    emails.unshift(newEmail)
+    utils.saveToStorage('EMAILS', emails);
+    return Promise.resolve(newEmail)
 }
 
 
@@ -35,20 +63,42 @@ function setReadStatus(emailId) {
     return getEmailById(emailId)
         .then(email => {
             email.isRead = !email.isRead;
-            console.log('bbbbbbbbb', email)
+            utils.saveToStorage('EMAILS' , emails)
             return Promise.resolve(email);
 
         })
 }
 
 function countUnreadEmails() {
-    var unreadEmails = emails.filter(email => {
-        return email.isRead
+        var unreadEmails = emails.filter(email => {
+         return email.isRead
     })
 
-
-    console.log('unread', unreadEmails.length)
+    console.log(unreadEmails.length)
     return unreadEmails.length
+
+}
+
+function sortEmailsByTitle() {
+
+    // sort by name
+    emails.sort(function (emailA, emailB) {
+        var subjectA = emailA.subject.toUpperCase(); // ignore upper and lowercase
+        var subjectB = emailB.subject.toUpperCase(); // ignore upper and lowercase
+        if (subjectA < subjectB) {
+            return -1;
+        }
+        if (subjectA > subjectB) {
+            return 1;
+        }
+    })
+}
+
+function sortEmailsByDate() {
+    // sort by value
+    emails.sort(function (emailA, emailB) {
+        return emailA.dateSent - emailB.dateSent;
+    });
 }
 
 export default {
@@ -56,7 +106,10 @@ export default {
     getEmailById,
     setReadStatus,
     removeEmail,
-    countUnreadEmails
+    countUnreadEmails,
+    addNewEmail,
+    sortEmailsByTitle,
+    sortEmailsByDate
 }
 
 

@@ -11,8 +11,6 @@ export default {
     <h2>{{email.subject}}</h2>
     <h6>{{dateSent}}</h6>
     <p>{{email.content}}</p>
-    <button @click = "deleteEmail">delete</button>
-    
         </section>
     
     `,
@@ -38,9 +36,9 @@ export default {
         //         .then(email => this.email = email)
         // },
 
-        deleteEmail(){
-            this.$emit('deleted', this.email.id)
-        },
+        // deleteEmail(){
+        //     this.$emit('deleted', this.email.id)
+        // },
 
        
     },

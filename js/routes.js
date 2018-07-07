@@ -5,6 +5,7 @@ import MailApp from './pages/mail/email-app-cmp.js'
 import emailDetails from './cmps/email-details-cmp.js'
 import NoteDetails from './pages/note/note-details-cmp.js'
 import NoteEdit from './pages/note/note-edit-cmp.js'
+import emailCompose from './cmps/email-compose-cmp.js'
 
 export default [
     {path: '/', component: HomePage},
@@ -14,6 +15,7 @@ export default [
     {path: '/note/edit/:noteId', component:NoteEdit},
     {path: '/email', component: MailApp},
     {path:  '/email/:id', component: MailApp},
+    {path: '/new', component: emailCompose},
     { path: '*', redirect: '/' },
 ]
 

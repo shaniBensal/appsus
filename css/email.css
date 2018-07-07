@@ -1,12 +1,24 @@
 
 .email-app{
     color: black;
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
 }
 
 .email-app a{
     color: black;
+}
+
+.email-app header{
+    height: 60px;
+    background-color: rgba(192, 192, 192, 0.466);
+    border: none;
+    text-align: center;
+}
+
+.email-details{
+    border-left: 2px solid black;
+    padding: 10px;
 }
 
 .email-list li{
@@ -14,5 +26,46 @@
 }
 
 .email-unread{
-    font-weight: bold;
+    font-weight: bolder;
 }
+
+.email-filter{
+    border-bottom: 1px solid silver;
+    padding: 5px;
+    margin: 20px;
+}
+
+.txt-preview p:nth-of-type(1){
+    color: #9E4770;
+}
+
+.progress-bar{
+    margin: 50px;
+    width: 80%;
+}
+
+.sort button{
+    padding: 10px;
+    background-color: none;
+    border: none;
+}
+
+.sort button:hover{
+    background-color: #9E4770;
+  
+}
+
+/* .email-app button{
+       
+    transition: all 0.3s ease;
+}
+
+.email-app button:hover{
+    transform: rotateY(45deg);
+    background-color: #9E4770;
+
+}
+     */
+    
+
+    

@@ -1,5 +1,5 @@
 import emailService from '../services/email-service.js'
-import progressBar from '../pages/mail/progress-bar-cmp.js'
+import progressBar from '../cmps/progress-bar-cmp.js'
 
 export default {
 
@@ -8,7 +8,7 @@ export default {
     template: `  
     <section class = "email-status">
         <h3> Emails Read: {{readEmailsCount}} from {{emailsCount}}</h3>
-        <progress-bar :read = "readEmailsCount" :count = "emailsCount"></progress-bar>
+        <progress-bar :read = "readEmailsCount" :total = "emailsCount"></progress-bar>
 
         
 
@@ -36,7 +36,10 @@ export default {
         },
 
         readEmailsCount() {
-            return emailService.countUnreadEmails()
+        
+                return emailService.countUnreadEmails()
+                  
+            
 
         }
 
@@ -47,14 +50,6 @@ export default {
 
 
     },
-
-    setFilter(filterBy) {
-        this.filter = filterBy;
-
-    },
-
-
-
 
     components: {
         progressBar

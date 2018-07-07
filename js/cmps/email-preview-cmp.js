@@ -9,8 +9,8 @@ export default {
                  v-bind:class = "{'email-unread': !isRead}" >
     <router-link :to="'/email/'+email.id">
              <div class="txt-preview">
-                   <p >{{email.subject}}</p>
-                   <p>{{contentSummery}}...</p>
+                   <p class="subject">{{email.subject}}</p>
+                   <p class="content">{{contentSummery}}...</p>
             </div>
                    <p class="hour">{{hour}}</p>
                    <div @click.stop="toggleMarkEmail" title="mark as read/unread">
@@ -29,7 +29,7 @@ export default {
     },
     created() {
 
-        console.log('Email preview created!!', this.email)
+        // console.log('Email preview created!!', this.email)
 
 
     },
@@ -77,7 +77,7 @@ export default {
 
     mounted() {
 
-        console.log('this.$refs', this.$refs);
+        // console.log('this.$refs', this.$refs);
         if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope-open'
         else this.$refs.myMark.classList = 'fas fa-envelope'
 

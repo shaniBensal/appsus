@@ -34,11 +34,18 @@ a {
 .nav-bar-main a{
     font-size: 30px;
     margin: 20px 0;
+    height: 50px;
+    width: 100px;
     color: white;
+    text-align: center;
 }
 
 .nav-bar-main .router-link-active{
     color: #9E4770;
+}
+
+.nav-bar-main a:hover{
+   border-bottom:2px solid #8D99AE;
 }
 
 
@@ -68,6 +75,10 @@ a {
 
 .space-around {
     justify-content: space-around;
+}
+
+.space-evenly{
+    justify-content: space-evenly;
 }
 
 .align-center {
@@ -109,6 +120,7 @@ header {
 .links{
     width: 80%;
     margin: 50px 0;
+    
 }
 
 header .main-menu a {
@@ -116,14 +128,23 @@ header .main-menu a {
     color: inherit;
 }
 
+.home-page li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+   
+}
+
 /* Main */
 
 .home-page img{
     width: 50%;
+    transition: all 0.8s ease-in-out;
 }
 
-main .blog-item {
-    flex: 0 0 100%;
+.home-page img:hover{
+   transform: scale(1.2)
 }
 
 
