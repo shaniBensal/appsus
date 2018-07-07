@@ -1,16 +1,19 @@
 import emailService from '../../services/email-service.js'
 import emailList from '../../cmps/email-list-cmp.js'
 import emailDetails from '../../cmps/email-details-cmp.js'
+// import emailStatus from '../../cmps/email-status-cmp.js'
 
 export default {
     template: `  
-    <section class = "email-app">
-        8
+    <section class = "email-app flex space-around">
+        
          <email-list :emails="emails"></email-list>
 
-        <email-details v-bind:email ="selectedEmail" v-if = "selectedEmail"
+        <email-details :email ="selectedEmail" v-if = "selectedEmail"
         @deleted = "onDelete">
         </email-details>
+
+        <!-- <email-status :emails="emails"></email-status> -->
 
     </section>`
     ,
@@ -74,7 +77,8 @@ export default {
 
     components: {
         emailList,
-        emailDetails
+        emailDetails,
+        // emailStatus
 
 
     },

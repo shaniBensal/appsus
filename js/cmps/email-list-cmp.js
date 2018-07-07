@@ -1,5 +1,6 @@
 import emailService from '../services/email-service.js'
 import emailPreview from '../cmps/email-preview-cmp.js'
+import emailStatus from '../cmps/email-status-cmp.js'
 
 export default {
 
@@ -12,6 +13,8 @@ export default {
                   <email-preview :email = "email"></email-preview>
             </li>
         </ul>
+
+        <emailStatus :emails = "emails"></emailStatus>
 
     </section>`
     ,
@@ -47,7 +50,8 @@ export default {
 
 
     components: {
-        emailPreview
+        emailPreview,
+        emailStatus
     },
 
 
