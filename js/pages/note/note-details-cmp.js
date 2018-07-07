@@ -3,6 +3,7 @@ import noteService from '../../services/note-service.js';
 export default {
   template: `
 		<section class="note-details" v-if="note">
+      <div :style="{backgroundColor: note.backgroundColor}">
 		<button @click="nextNote">Next Note</button>
 
         <button @click="$router.push('/note')"> Back </button>
@@ -24,13 +25,15 @@ export default {
                 <li>{{listBullet}}</li>
             </div>
           </ul>
+          </div>
 			</div> 
 		</section>  
 	`,
   components: {},
   data() {
     return {
-        note:null
+        note:null, 
+        editedColor:'white'
     };
   },
   created() {

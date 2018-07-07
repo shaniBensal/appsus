@@ -52,7 +52,8 @@ export default {
 
         addBullet() {
             let newBullet = '';
-            this.note.data.unshift(newBullet);
+            if (this.note.data === null) this.note.data = ['first note'];
+            else this.note.data.unshift(newBullet);
             noteService.saveNote(this.note)
         },
 

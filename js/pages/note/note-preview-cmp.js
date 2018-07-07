@@ -4,6 +4,8 @@ export default {
     template: `
     <section class="note-prev clean-list">
     <router-link :to="'/note/'+note.id"> 
+    <div :style="{backgroundColor: note.backgroundColor}">
+    {{note.title}}
         <li v-if="note.type ==='txt'">
             {{note.data}}
         </li>
@@ -15,10 +17,12 @@ export default {
             </div>
             </ul>
         </li> 
+        
 
         <li v-if= "note.type ==='img'">
         <img class="thumb-photo" v-bind:src="note.data">
         </li>
+</div>
         
     </router-link>
     </section>
