@@ -11,7 +11,7 @@ export default {
         <li v-if= "note.type ==='list'">
             <ul>     
             <div v-for="(listBullet, idx) in note.data">           
-                <li>{{listBullet}}</li>
+                <li class="squreBullets">{{listBullet}}</li>
             </div>
             </ul>
         </li> 

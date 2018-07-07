@@ -1,4 +1,4 @@
-// import noteAppCmp from "../pages/note/note-app-cmp";
+
 import utils from './utils.js'
 
 function query() {
@@ -6,16 +6,16 @@ function query() {
     if (notesFromStorage) {
         notes = notesFromStorage;
     }
-	return Promise.resolve(notes);
+    return Promise.resolve(notes);
 }
 
-function getNextNoteId(prevNoteId){
+function getNextNoteId(prevNoteId) {
     var noteIdx = notes.findIndex(currNote => currNote.id === prevNoteId);
-	var nextNote = (noteIdx < notes.length-1)? notes[noteIdx+1] : notes[0] 
-	return Promise.resolve(nextNote.id)
+    var nextNote = (noteIdx < notes.length - 1) ? notes[noteIdx + 1] : notes[0]
+    return Promise.resolve(nextNote.id)
 }
 
-function emptyNote(){
+function emptyNote() {
     return {
         id: null,
         type: null,
@@ -24,7 +24,7 @@ function emptyNote(){
     }
 }
 
-function saveNote(note){
+function saveNote(note) {
     if (note.id) {
         var noteIdx = notes.findIndex(currNote => currNote.id === note.id);
         notes[noteIdx] = note;
@@ -36,18 +36,34 @@ function saveNote(note){
     return Promise.resolve(notes);
 }
 
-function images(){
-    return ['http://coding-academy.org/books-photos/20.jpg','http://coding-academy.org/books-photos/14.jpg','http://coding-academy.org/books-photos/2.jpg']
+function images() {
+    var imagsFromStorage = utils.loadFromStorage('IMAGES');
+    if (imagsFromStorage) {
+        return imagsFromStorage;
+    } else return [
+                   'http://coding-academy.org/books-photos/20.jpg',
+                   'http://coding-academy.org/books-photos/14.jpg',
+                   'http://coding-academy.org/books-photos/2.jpg'
+                    ]
 }
 
-function removeNote(noteIdx){
+function addNewImage(url) {
+    var imgs = images();
+    imgs.unshift(url);
+    imgs = [ ...new Set(imgs)];
+    utils.saveToStorage('IMAGES', imgs)
+    return Promise.resolve(imgs);
+}
+
+function removeNote(noteIdx) {
     notes.splice(noteIdx, 1);
     utils.saveToStorage('NOTES', notes);
+    return Promise.resolve(notes);
 }
 
-function getNoteById(noteId){        
-    let note = notes.find(note => note.id === noteId);            
-	return Promise.resolve(note);
+function getNoteById(noteId) {
+    let note = notes.find(note => note.id === noteId);
+    return Promise.resolve(note);
 }
 
 // function saveNote(note){
@@ -69,19 +85,20 @@ var notes = [
     {
         id: 'Q8Q9Lsd03BD',
         type: 'txt',
-        title:'My first text note',
+        title: 'My first text note',
         data: 'Vue is the Best'
     },
     {
         id: 'bd7a76kARao',
         type: 'list',
-        title:'Things To-Do',
-        data:['go shopping', 'watch some movie', 'sleep']
+        title: 'Things To-Do',
+        data: ['go shopping', 'watch some movie', 'sleep'],
+        dataMarked: []
     },
     {
         id: 'qKyG0vqeO3e',
         type: 'img',
-        title:'How I feel now',
+        title: 'How I feel now',
         data: 'http://coding-academy.org/books-photos/17.jpg'
     }
 ]
@@ -93,5 +110,6 @@ export default {
     getNoteById,
     getNextNoteId,
     emptyNote,
-    images
+    images,
+    addNewImage
 }

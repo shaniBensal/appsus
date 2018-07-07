@@ -15,7 +15,6 @@ export default [
     {path: '/email', component: MailApp},
     {path:  '/email/:id', component: MailApp},
     { path: '*', redirect: '/' },
-
 ]
 
 

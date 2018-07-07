@@ -128,7 +128,7 @@ footer {
     align-items: center;
 }
 
-@media (min-width: 830px) {
+ /* @media (min-width: 830px) {
     header .main-menu li:not(:last-child) {
         margin-right: 100px;
     }
@@ -150,7 +150,7 @@ footer {
     main .blog-item:first-child img {
         margin-bottom: 100px;
     }
-}
+} */
 
 ul.main-menu a {
     padding: 20px;
@@ -191,16 +191,37 @@ ul.main-menu.open {
     position: fixed;
     width: 100%;
     height: 100%;
+} 
+
+button{
+    cursor: pointer;
 }
 
 
 /* notes */
 .thumb-photo{
     width: 50px;
+    cursor: pointer;
 }
 
 .newImg{
     width: 100px;
     height: 100px;
-    background-color: aqua;
+}
+
+.noOutline input{
+    border: none;
+    outline: none;
+}
+
+.noOutline input:focus{
+    outline: none;
+}
+
+.squreBullets{
+    list-style-type: square;
+}
+
+.Markedbullets{
+    text-decoration: line-through;
 }

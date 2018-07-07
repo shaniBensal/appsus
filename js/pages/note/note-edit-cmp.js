@@ -1,10 +1,11 @@
 import noteService from '../../services/note-service.js';
+import noteBullets from './note-listType-cmp.js'
 
 export default {
 
     template: `
     <section class="note-edit">
-        <form>
+        <form class="noOutline">
                 Title: <input type="text" v-model="editedNote.title">
                 
             <div v-if="editedNote.type ==='txt'">
@@ -12,13 +13,7 @@ export default {
             </div>
 
         <div v-if= "editedNote.type ==='list'">
-            <ul>     
-            <div v-for="(listBullet, idx) in editedNote.data">           
-                <li>        
-                <input type="text" v-model="editedNote.data[idx]">
-                </li>
-            </div>
-            </ul>
+            <note-bullets v-bind:note="editedNote"></note-bullets>
         </div> 
 
         <div v-if= "editedNote.type ==='img'" class="newImg">
@@ -27,9 +22,11 @@ export default {
             <div v-for="(image,idx) in images">
             <img class ="thumb-photo" v-bind:src="image" @click="switchMainImg(idx)">
             </div>
+            enter another URL: <input v-model ="editedNote.data"> 
         </div>
         </div>
                 <button type="submit" @click.prevent="saveNote">Save</button>
+                <button @click="$router.push('/note/'+editedNote.id)"> Back </button>
             </form>
     </section>
     `,
@@ -51,19 +48,26 @@ export default {
                     .then(note => {
                         this.editedNote = JSON.parse(JSON.stringify(note));
                     })
-            }
+            } else if (noteId === 'text') editedNote.type = 'txt';
+            else if (noteId === 'img') editedNote.type = 'img';
+            else if (noteId === 'list') editedNote.type = 'list';
         },
 
         saveNote() {
+            if (this.editedNote.type === 'img') {
+                noteService.addNewImage(this.editedNote.data)
+            }
             noteService.saveNote(this.editedNote)
                 .then(savedNote => {
                     this.$router.push('/note');
-                    // eventBus.$emit(EVENT_SHOW_MSG, 'Book Saved!!!')
                 })
         },
-
-        switchMainImg(idx){
+        
+        switchMainImg(idx) {
             this.editedNote.data = this.images[idx];
         }
+    },
+    components: {
+        noteBullets
     }
 }
