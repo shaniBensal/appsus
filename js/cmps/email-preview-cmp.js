@@ -39,7 +39,7 @@ export default {
             return this.email.content.substring(0, 50);
         },
         hour: function () {
-            return moment.unix(this.email.dateSent).format("HH:mm");
+            return moment.unix(this.email.dateSent).format('HH:mm');
         }
 
     },

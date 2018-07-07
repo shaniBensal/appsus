@@ -20,7 +20,8 @@ function emptyNote() {
         id: null,
         type: null,
         title: null,
-        data: null
+        data: null,
+        backgroundColor:'white'
     }
 }
 
@@ -29,7 +30,7 @@ function saveNote(note) {
         var noteIdx = notes.findIndex(currNote => currNote.id === note.id);
         notes[noteIdx] = note;
     } else {
-        note.id = makeid();
+        note.id = utils.makeId();
         notes.unshift(note)
     }
     utils.saveToStorage('NOTES', notes);
@@ -41,16 +42,16 @@ function images() {
     if (imagsFromStorage) {
         return imagsFromStorage;
     } else return [
-                   'http://coding-academy.org/books-photos/20.jpg',
-                   'http://coding-academy.org/books-photos/14.jpg',
-                   'http://coding-academy.org/books-photos/2.jpg'
-                    ]
+        'http://coding-academy.org/books-photos/20.jpg',
+        'http://coding-academy.org/books-photos/14.jpg',
+        'http://coding-academy.org/books-photos/2.jpg'
+    ]
 }
 
 function addNewImage(url) {
     var imgs = images();
     imgs.unshift(url);
-    imgs = [ ...new Set(imgs)];
+    imgs = [...new Set(imgs)];
     utils.saveToStorage('IMAGES', imgs)
     return Promise.resolve(imgs);
 }
@@ -66,40 +67,38 @@ function getNoteById(noteId) {
     return Promise.resolve(note);
 }
 
-// function saveNote(note){
-//     if (note.id) {
-// 		var noteIdx = notes.findIndex(currNote => currNote.id === note.id);
-// 		// Vue.js Caveat!
-// 		notes.splice(noteIdx, 1, note)
-// 		// books[bookIdx] = book;
+function notesToShow(filterBy) {
+    var filterByToLower = filterBy.toLowerCase();
+    return notes.filter(note => {
+        var titleToLower = note.title.toLowerCase(); 
+        return titleToLower.includes(filterBy)
+    })
+}
 
-// 	} else {
-// 		note.id = utils.makeId();
-// 		notes.push(note);
-// 	}
-// 	console.log('Sevice is saving the book', noteAppCmp);
-// 	return Promise.resolve(note);
-
-// }
 var notes = [
     {
         id: 'Q8Q9Lsd03BD',
         type: 'txt',
         title: 'My first text note',
-        data: 'Vue is the Best'
+        data: 'Vue is the Best',
+        backgroundColor:'white'
+
     },
     {
         id: 'bd7a76kARao',
         type: 'list',
         title: 'Things To-Do',
         data: ['go shopping', 'watch some movie', 'sleep'],
-        dataMarked: []
+        dataMarked: [],
+        backgroundColor:'white'
+
     },
     {
         id: 'qKyG0vqeO3e',
         type: 'img',
         title: 'How I feel now',
-        data: 'http://coding-academy.org/books-photos/17.jpg'
+        data: 'http://coding-academy.org/books-photos/17.jpg',
+        backgroundColor:'white'
     }
 ]
 
@@ -111,5 +110,6 @@ export default {
     getNextNoteId,
     emptyNote,
     images,
-    addNewImage
+    addNewImage,
+    notesToShow
 }
