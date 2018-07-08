@@ -6,7 +6,7 @@ import noteDetails from '../../pages/note/note-details-cmp.js'
 
 export default {
     template: `
-    <section class="note-app">
+    <section class="note-app flex column align-center">
         <h1>Note App!</h1>
 
         <note-add v-if="displayMode === 'list'"></note-add>

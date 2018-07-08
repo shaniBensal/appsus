@@ -5,15 +5,16 @@ export default {
     props: ['notes'],
     template: `
     <section class="notes-list clean-list">
-    <ul class="flex">
-        <div v-for="(note, idx) in notes">
-        <li class="list">
-        <button v-on:click.stop="deleteNote(idx)">X</button>
+    <ul class="note-list flex flex-wrap">
+        <li class="list" :style="{backgroundColor: note.backgroundColor}"  v-for="(note, idx) in notes">
+        <button @click.stop="setPinNote(idx)">
+            <i v-if ="note.pinNote" class="fas fa-thumbtack un-pin"></i>
+        <i v-if="!note.pinNote" class="fas fa-thumbtack pin"></i>
+    </button>
+        <button class= "delete-btn" v-on:click.stop="deleteNote(idx)">X</button>
             <note-preview v-bind:note="note" v-on:click.native="selectedNote(note)">
             </note-preview>
-            <button @click.stop="setPinNote(idx)">Pin</button>
             </li>
-        </div>
     </ul>
     </section>
     `,
@@ -30,7 +31,8 @@ export default {
         },
         setPinNote(idx) {
             this.$emit('pin-note', idx)
-        }
+        },
+
     },
     components: {
         notePreview

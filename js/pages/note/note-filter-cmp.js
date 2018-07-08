@@ -2,8 +2,8 @@ import noteService from '../../services/note-service.js';
 
 export default {
     template:`
-    <section class="note-app">
-    <input type="text" v-model="searchNote" placeholder="Search Notes" />
+    <section class="note-filter">
+    <i class="fas fa-search"></i> <input type="text" v-model="searchNote" placeholder="Search Notes" />
     </section>
     `,
     data() {

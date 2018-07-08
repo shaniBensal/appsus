@@ -45,7 +45,8 @@ a {
 }
 
 .nav-bar-main a:hover{
-   border-bottom:2px solid #8D99AE;
+   border-bottom:2px solid #9E4770;
+   color: #9E4770;
 }
 
 
@@ -97,7 +98,7 @@ a {
 
 header {
     height: 100px;
-    background: #2E2532;
+    background: #6B717E;
     border-bottom: 5px solid #9E4770
 
 }
@@ -125,7 +126,6 @@ header {
 
 header .main-menu a {
     text-transform: uppercase;
-    color: inherit;
 }
 
 .home-page li{
@@ -238,7 +238,7 @@ header .main-menu a {
     margin: 20px 20px;
     transition: all 0.3s ease;
     border: 5px solid lightgray;
-    outline: none;
+    /* outline: none; */
   }
   
   textarea:focus{
@@ -247,6 +247,10 @@ header .main-menu a {
     border: 1px solid rgb(255, 248, 254);
    
   }
+
+  .hamburger{
+    display: none;
+}
 
 
 /* Footer */
@@ -260,74 +264,29 @@ footer {
     align-items: center;
 }
 
- /* @media (min-width: 830px) {
-/* @media (min-width: 830px) {
-    header .main-menu li:not(:last-child) {
-        margin-right: 100px;
-    }
-    button {
-        display: none;
-    }
-}
-
-@media (min-width: 950px) {
-    main .blog-item {
-        flex: 0 0 435px;
-    }
-    main .blog-item:first-child {
-        flex: 0 0 100%;
-    }
-    main .blog-item:first-child .blog-info {
-        margin: 0 50px;
-    }
-    main .blog-item:first-child img {
-        margin-bottom: 100px;
-    }
-} */
-
-ul.main-menu a {
-    padding: 20px;
-    display: block;
-    transition: all .3s;
-}
-
-ul.main-menu a:hover {
-    background: rgba(153, 153, 153, 0.2);
-}
-
-
-ul.main-menu li {
-    padding: 0;
-    border-bottom: 1px solid rgba(102, 102, 102, 0.5);
-    margin: 0;
-}
-
-ul.main-menu {
-    flex-direction: column;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.58);
-    border-left: 1px solid rgba(102, 102, 102, 0.5);
-    min-width: 250px;
-    transform: translate(100%, 0);
-
-    transition: all .8s;
-}
-
-ul.main-menu.open {
-    transform: translate(0, 0);
-}
-
-.screen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-} 
 
 button{
     cursor: pointer;
+    width: fit-content;
+    border: none;
+    padding: 5px;
+}
+
+button:hover{
+    background-color:#9E4770;
+}
+
+.delete-btn{
+    float: right;
+
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+ul{
+    padding: 0px;
 }
 
 
@@ -335,6 +294,36 @@ button{
  .thumb-photo{
     width: 50px;
     cursor: pointer;
+}
+
+.note-edit{
+    height: 100vh;
+}
+
+.note-app{
+    height: 100vh;
+    background-color: #FFE8E1;
+}
+
+.note-info{
+    /* border: 1px solid black; */
+    width: max-content;
+    align-self: center;
+}
+
+.note-title{
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 3.3em;
+}
+
+i {
+    font-size: 2em;
+    color: #000000;
+}
+
+.display-image{
+    width: 50%;
 }
 
 .newImg{
@@ -359,18 +348,108 @@ button{
     text-decoration: line-through;
 }
 
-ul{
-    overflow:hidden;
-    padding:3em;
+ul.note-list{
+    padding: 0px;
 }
 
 li.list {
     text-decoration:none;
-    color:#000;
-    background:#ffc;
+    color:#000000;
     display:block;
-    height:10em;
     width:10em;
+    margin: 10px;
     padding:1em;
+    border: #000000 solid 1px;
+    border-radius: 10px;
   }
 
+  .note-prev {
+      padding: 10px 0px;
+      text-align: center;
+  }
+
+  .pin {
+    opacity: 0.2;
+  }
+
+  .un-pin {
+      opacity: 1;
+  }
+
+  .note-filter{
+      margin: 1em 0em;
+  }
+
+  .note-content{
+      margin: 10px 0px;
+  }
+
+  /* .back-btn{
+      float: left;
+  } */
+
+  .note-details{
+      padding: 10px;
+      height: 100vh;
+      background-color: #D4DCCD;
+  }
+
+  .note-list-display{
+    padding: 10px 0px;
+    font-size: 1.5em;
+  }
+ 
+  @media (max-width: 440px) {
+  
+    .hamburger{
+        padding-right: 10px;
+        top:0;
+        right: 0;
+        display: flex;
+        position: fixed;
+        align-items: center;
+        padding: 10px;
+        color: #f0f0f0;
+        border: none;
+        z-index: 2;
+    }
+
+    .hamburger::after{
+        content: "\2630";
+        font-size: 30px;
+    }
+
+    .exit.hamburger::after{
+        content: "\2715";
+        font-size: 30px;
+    } 
+
+    .nav-bar-main {
+        position: relative;
+        display: none;
+    }
+
+    .open {
+        padding: 0;
+        display: block;
+        position: relative;
+        z-index: 2;
+        top: 0;
+    }
+
+    a .open {
+        transform: translate(100%, 0);
+        transition: all .8s;
+    }
+   
+
+    /* nav a:hover{
+        color: #9E4770;
+    }
+
+
+    .nav a { 
+        background: grey;
+    } */
+
+}
