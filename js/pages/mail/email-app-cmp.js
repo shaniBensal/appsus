@@ -3,24 +3,28 @@ import emailList from '../../cmps/email-list-cmp.js'
 import emailDetails from '../../cmps/email-details-cmp.js'
 import emailStatus from '../../cmps/email-status-cmp.js'
 import emailFilter from '../../cmps/email-filter-cmp.js'
+import progressBar from '../../cmps/progress-bar-cmp.js'
+import emailCompose from '../../cmps/email-compose-cmp.js'
 
 export default {
     template: `  
-    <section class = "email-app">
+    <section class = "email-app container">
 
         <header>
             <h3>Welcome To Your Email Manager</h3>
             <h4>the Appsus Email Experience</h4>
+            <emailStatus :emails = "emails"></emailStatus>
         </header>
         <router-link exact to="/new">
-             <button>
+             <button class="new-email">
                   <i class="far fa-edit"></i>
-                  New Email
+                  <span>New Email</span>
              </button>
         </router-link>
          <email-filter v-on:filtered="setFilter"></email-filter>
-        <div class = "flex space-evenly">
 
+        <div class = "main flex">
+       
          <email-list :emails="emailsToShow" @deleted = "onDelete"></email-list>
 
         <email-details   :email ="selectedEmail" v-if = "selectedEmail"></email-details>
@@ -29,7 +33,8 @@ export default {
 
         </div>
 
-          <emailStatus :emails = "emails"></emailStatus>
+           <progress-bar :read = "readEmailsCount" :total = "emailsCount"></progress-bar>
+   
 
     </section>`
     ,
@@ -39,6 +44,7 @@ export default {
             emails: [],
             selectedEmail: null,
             filter: null,
+          
 
         }
     },
@@ -71,8 +77,8 @@ export default {
             }
             if (this.filter.emailStatus === 'Unread') {
                 return this.emails.filter(email => {
-                    return (email.subject.includes.toLowerCase(this.filter.byTxt) ||
-                             email.content.includes.toLowerCase(this.filter.byTxt)) &&
+                    return (email.subject.toLowerCase().includes(this.filter.byTxt) ||
+                             email.content.toLowerCase().includes(this.filter.byTxt)) &&
                              (!email.isRead)
 
                 })
@@ -86,6 +92,18 @@ export default {
 
                 })
             }
+
+        },
+        emailsCount() {
+            return this.emails.length
+        },
+
+        readEmailsCount() {
+            var counter = 0;
+            this.emails.forEach(email => {
+                if(!email.isRead) counter++
+            });
+            return counter;
 
         }
     },
@@ -141,7 +159,9 @@ export default {
         emailList,
         emailDetails,
         emailStatus,
-        emailFilter
+        emailFilter,
+        progressBar,
+        emailCompose
 
 
     },

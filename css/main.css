@@ -53,7 +53,7 @@ a {
 /* Helpers */
 
 .container {
-    max-width: 1060px;
+    max-width: 980px;
     margin: 0 auto;
 }
 
@@ -330,6 +330,9 @@ button{
     cursor: pointer;
 }
 
+i{
+    cursor: pointer;
+}
 
 /* notes */
  .thumb-photo{

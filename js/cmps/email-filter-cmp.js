@@ -4,14 +4,14 @@ export default {
 
 
     template: `
-    <section class="email-filter flex space-around">
-        <div>
-     Search by text:   
-    
-      <input type="text" v-model="filterBy.byTxt" placeholder="Search..."  @input="emitFilter">
-        <i class="fas fa-search"></i>
+    <section class="email-filter flex space-evenly">
+        
+      <div class="filter">
+        <div class="search">
+         <input type="text" v-model="filterBy.byTxt" placeholder="Search..."  @input="emitFilter">
+            <i class="fas fa-search"></i>
         </div>
-    <div>
+         <div class="radio-btn">
         <label>
         
             <input type="radio" value="All" v-model="filterBy.emailStatus"  @input="emitFilter"> All
@@ -24,6 +24,7 @@ export default {
         <label>
             <input type="radio" value="Unread" v-model="filterBy.emailStatus"  @input="emitFilter"> Unread
         </label>
+      </div>
     </div>
 
     <div class="sort">
@@ -49,6 +50,8 @@ export default {
 
             },
 
+        
+
         }
     },
 
@@ -67,7 +70,9 @@ export default {
         sortByDate() {
             console.log('date')
             emailService.sortEmailsByDate()
-        }
+        },
+
+
     }
 
 }

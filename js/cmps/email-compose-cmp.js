@@ -4,7 +4,9 @@ export default {
 
     template: `
     <section class="email-compose">
-    <button @click = "back">Back</button>
+    <button class="back" @click = "back">
+    <i class="fas fa-arrow-left"></i>
+    </button>
     <h1>NEW EMAIL</h1>
 
     <form>
@@ -33,7 +35,8 @@ export default {
                 content: null,
                 isRead: false,
                 dateSent: null
-            }
+            },
+           
         }
 
     },
@@ -69,7 +72,10 @@ export default {
 
         back(){
             console.log('back')
-            this.$router.push('/email')
+             this.$router.push('/email')
+            
+        
+
         }
 
     }

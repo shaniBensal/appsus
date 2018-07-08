@@ -6,20 +6,23 @@ export default {
     props: ['email'],
 
     template: `  
-    <section class = "email-preview" @click = "onReadEmail()"
+    <section class = "email-preview flex column" @click = "onReadEmail()"
                  v-bind:class = "{'email-unread': !isRead}" >
     <router-link :to="'/email/'+email.id">
              <div class="txt-preview">
                    <p class="subject">{{email.subject}}</p>
                    <p class="content">{{contentSummery}}...</p>
-            </div>
+           
+        
                    <p class="hour">{{hour}}</p>
+             </div>
+     </router-link>
                    <div @click.stop="toggleMarkEmail" title="mark as read/unread">
                    <i v-if="!isRead"  class="fas fa-envelope"></i>
                    <i v-else  class="fas fa-envelope-open"></i>
 
                    </div>
-    </router-link>
+    
 
     </section>`
     ,

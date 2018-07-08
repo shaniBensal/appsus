@@ -5,8 +5,12 @@ export default {
     template: `
         <section class="email-edit">
             <h1>Edit Email</h1>
+            <button class="back" @click = "back">
+                <i class="fas fa-arrow-left"></i>
+         </button>
             <form>
                 <input type="text" v-model="editedEmail.subject">
+                <textarea v-model = "editedEmail.content"></textarea>
                 <button class="btn btn-primary" ref="myBtn" @click="saveEmail">Save</button>
             </form>
         
@@ -43,7 +47,13 @@ export default {
                     this.$router.push('/email');
 
                 })
+        },
+
+        back(){
+            console.log('back')
+            this.$router.push('/email')
         }
+
     },
 
 }
