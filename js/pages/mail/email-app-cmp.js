@@ -64,15 +64,15 @@ export default {
             if (this.filter.emailStatus === 'All' && this.filter.byTxt === '') return this.emails
             if (this.filter.emailStatus === 'Read') {
                 return this.emails.filter(email => {
-                    return (email.subject.includes(this.filter.byTxt) ||
-                        email.content.includes(this.filter.byTxt)) &&
+                    return (email.subject.toLowerCase().includes(this.filter.byTxt) ||
+                        email.content.toLowerCase().includes(this.filter.byTxt)) &&
                         (email.isRead)
                 })
             }
             if (this.filter.emailStatus === 'Unread') {
                 return this.emails.filter(email => {
-                    return (email.subject.includes(this.filter.byTxt) ||
-                             email.content.includes(this.filter.byTxt)) &&
+                    return (email.subject.includes.toLowerCase(this.filter.byTxt) ||
+                             email.content.includes.toLowerCase(this.filter.byTxt)) &&
                              (!email.isRead)
 
                 })
@@ -80,8 +80,8 @@ export default {
 
             if (this.filter.emailStatus === 'All') {
                 return this.emails.filter(email => {
-                    return email.subject.includes(this.filter.byTxt) ||
-                        email.content.includes(this.filter.byTxt)
+                    return email.subject.toLowerCase().includes(this.filter.byTxt.toLowerCase()) ||
+                        email.content.toLowerCase().includes(this.filter.byTxt.toLowerCase())
 
 
                 })
@@ -105,8 +105,24 @@ export default {
 
         onDelete() {
             console.log('deleting email', this.selectedEmail)
-            emailService.removeEmail(this.selectedEmail.id)
-            this.$router.push(`/email`)
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  swal("email deleted!", {
+                    icon: "success",
+                  });
+                  emailService.removeEmail(this.selectedEmail.id)
+                   this.$router.push(`/email`)
+                } else {
+                  swal("email saved!");
+                }
+              });
+            
         },
 
 

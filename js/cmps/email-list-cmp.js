@@ -14,6 +14,8 @@ export default {
                   <button @click = "deleteEmail(idx)">
                        <i class="fas fa-trash-alt"></i>
                   </button>
+                  
+                    
             </li>
         </ul>
 

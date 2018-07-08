@@ -148,6 +148,107 @@ header .main-menu a {
 }
 
 
+
+.about h3{
+    text-align: center;
+}
+
+/* .about img{
+    width: 200px;
+    
+} */
+
+.about li{
+    text-align: center;
+}
+.about img{
+    border-radius: 50%;
+    width: 100px;
+  }
+  
+  .about h3{
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .details li{
+    margin: 0 40px;
+  }
+
+  .social-network{
+    align-items: baseline;
+    justify-content: center;
+  }
+  
+  .social-network a{
+    text-decoration: none;
+    color: #323232;
+  
+  }
+  
+  .facebook a{
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  .facebook a:hover{
+    background-color: #4267b2
+  }
+  
+  .linkedin{
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  .linkedin:hover{
+    background-color: #0077B5;
+  }
+  
+  .about .contact{
+    background-color: #2E2532;
+    color: #ffffff;
+    padding: 0 0 20px 0;
+   
+  }
+  
+ .about input[type="email"]{
+    margin: 20px 20px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    border: 5px solid lightgray;
+    outline: none;
+  }
+  
+  .about input[type="email"]:focus{
+    box-shadow: 0 0 5px rgb(231, 195, 225);
+    border: 1px solid rgb(255, 248, 254);
+   
+  }
+  
+  textarea{
+    margin: 20px 20px;
+    transition: all 0.3s ease;
+    border: 5px solid lightgray;
+    outline: none;
+  }
+  
+  textarea:focus{
+    margin: 20px 20px;
+    box-shadow: 0 0 5px rgb(231, 195, 225);
+    border: 1px solid rgb(255, 248, 254);
+   
+  }
+
+
 /* Footer */
 
 

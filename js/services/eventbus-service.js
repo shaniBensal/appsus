@@ -1,5 +1,5 @@
 
-export const EVENT_SHOW_MSG = 'EVENT_SHOW_MSG'
+export const EVENT_READ_EMAIL = 'EVENT_READ_EMAIL'
 
 
 export const eventBus = new Vue();

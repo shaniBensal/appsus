@@ -1,4 +1,5 @@
 import emailService from '../services/email-service.js'
+import { eventBus, EVENT_READ_EMAIL } from '../services/eventbus-service.js'
 
 export default {
 
@@ -14,7 +15,8 @@ export default {
             </div>
                    <p class="hour">{{hour}}</p>
                    <div @click.stop="toggleMarkEmail" title="mark as read/unread">
-                   <i ref="myMark" class="fas fa-envelope"></i>
+                   <i v-if="!isRead"  class="fas fa-envelope"></i>
+                   <i v-else  class="fas fa-envelope-open"></i>
 
                    </div>
     </router-link>
@@ -28,9 +30,6 @@ export default {
         }
     },
     created() {
-
-        // console.log('Email preview created!!', this.email)
-
 
     },
 
@@ -48,40 +47,21 @@ export default {
         onReadEmail() {
             if (this.isRead) return;
             emailService.setReadStatus(this.email.id)
-                .then(email=> this.isRead = this.email.isRead)
-                
-                if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope'
-                else this.$refs.myMark.classList = 'fas fa-envelope-open'
-    
-        
+                .then(email => {
+                    this.isRead = email.isRead
+                })
+
+
         },
 
         toggleMarkEmail() {
             emailService.setReadStatus(this.email.id)
-                .then(email => this.isRead = this.email.isRead)
-         
-            if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope'
-            else this.$refs.myMark.classList = 'fas fa-envelope-open'
-
-
+                .then(email => {
+                    this.isRead = email.isRead
+                })
         }
-
-
     },
 
-    setFilter(filterBy) {
-        this.filter = filterBy;
-
-    },
-
-
-    mounted() {
-
-        // console.log('this.$refs', this.$refs);
-        if (this.isRead) this.$refs.myMark.classList = 'fas fa-envelope-open'
-        else this.$refs.myMark.classList = 'fas fa-envelope'
-
-    },
 
     components: {
 

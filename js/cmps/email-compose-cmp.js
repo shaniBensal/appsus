@@ -4,6 +4,7 @@ export default {
 
     template: `
     <section class="email-compose">
+    <button @click = "back">Back</button>
     <h1>NEW EMAIL</h1>
 
     <form>
@@ -11,7 +12,7 @@ export default {
         <input  type="text" v-model="newEmail.subject" placeholder="Subject" />
        
         
-        <input  type="textarea" v-model="newEmail.content" placeholder="Your message here..." />
+        <textarea v-model="newEmail.content" placeholder="Your message here..." ></textarea> 
 
         <button @click.prevent="save">Send</button>
         
@@ -65,6 +66,11 @@ export default {
             // this.$emit('email-added', this.newEmail)
 
         },
+
+        back(){
+            console.log('back')
+            this.$router.push('/email')
+        }
 
     }
 }

@@ -8,6 +8,7 @@ export default {
     template: `  
     <section class = "email-status">
         <h3> Emails Read: {{readEmailsCount}} from {{emailsCount}}</h3>
+
         <progress-bar :read = "readEmailsCount" :total = "emailsCount"></progress-bar>
 
         
@@ -18,16 +19,7 @@ export default {
     data() {
         return {
 
-            counter: 0,
-
-
         }
-    },
-    created() {
-
-        console.log('Email status created!!', this.emails)
-
-
     },
 
     computed: {
@@ -36,17 +28,13 @@ export default {
         },
 
         readEmailsCount() {
-        
-                return emailService.countUnreadEmails()
-                  
-            
+            var counter = 0;
+            this.emails.forEach(email => {
+                if(!email.isRead) counter++
+            });
+            return counter;
 
         }
-
-
-    },
-
-    methods: {
 
 
     },

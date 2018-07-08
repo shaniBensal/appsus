@@ -8,9 +8,14 @@ export default {
     template: `
         <section class="email-details">
 
-    <h2>{{email.subject}}</h2>
-    <h6>{{dateSent}}</h6>
-    <p>{{email.content}}</p>
+            <h2>{{email.subject}}</h2>
+            <h6>{{dateSent}}</h6>
+            <p>{{email.content}}</p>
+
+                    
+                         <button @click="editEmail">
+                         <i class="fas fa-reply"></i>
+                        </button>
         </section>
     
     `,
@@ -39,6 +44,10 @@ export default {
         // deleteEmail(){
         //     this.$emit('deleted', this.email.id)
         // },
+
+        editEmail(){
+            this.$router.push('/email/edit/'+this.email.id)
+        }
 
        
     },

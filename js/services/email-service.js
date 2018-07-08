@@ -1,10 +1,17 @@
 
 import utils from '../services/utils.js'
 
+
+var emails = utils.loadFromStorage('EMAILS') || createEmails();
+
+
+
 function query() {
-    var emailsFromStorage = utils.loadFromStorage('EMAILS');
-    if (emailsFromStorage) {
-        emails = emailsFromStorage;
+    if (!emails) {
+        var emailsFromStorage = utils.loadFromStorage('EMAILS');
+        if (emailsFromStorage) {
+            emails = emailsFromStorage;
+        }
     }
     return Promise.resolve(emails);
 }
@@ -13,7 +20,6 @@ function query() {
 
 
 function getEmailById(emailId) {
-
     var email = emails.find(currEmail => currEmail.id === emailId);
     return Promise.resolve(email);
 
@@ -48,6 +54,21 @@ function emptyEmail() {
     }
 }
 
+function saveEmail(email) {
+	if (email.id) {
+		var emailIdx = emails.findIndex(curremail => curremail.id === email.id);
+
+		emails.splice(emailIdx, 1, email)
+
+
+	} else {
+		email.id = utils.makeId();
+		emails.push(email);
+	}
+	console.log('Sevice is saving the email', email);
+	return Promise.resolve(email);
+}
+
 function addNewEmail(newEmail) {
     console.log(newEmail)
     newEmail.dateSent = Date.now()
@@ -64,14 +85,14 @@ function setReadStatus(emailId) {
         .then(email => {
             email.isRead = !email.isRead;
             utils.saveToStorage('EMAILS' , emails)
-            return Promise.resolve(email);
+            return email;
 
         })
 }
 
 function countUnreadEmails() {
         var unreadEmails = emails.filter(email => {
-         return email.isRead
+         return !email.isRead
     })
 
     console.log(unreadEmails.length)
@@ -109,33 +130,37 @@ export default {
     countUnreadEmails,
     addNewEmail,
     sortEmailsByTitle,
-    sortEmailsByDate
+    sortEmailsByDate,
+    emptyEmail,
+    saveEmail
 }
 
 
+function createEmails() {
+    return [
 
-var emails = [
+        {
+            "id": "OXeMG8wNskc",
+            "subject": "Lorem ipsum dolor",
+            "content": "mi est eros convallis auctor arcu dapibus himenaeos",
+            "isRead": false,
+            "dateSent": "1530451826",
+        },
+        {
+            "id": "JYOJa2NpSCq",
+            "subject": 'disputando disputationi',
+            "content": " regione dolores. Sit ut choro dolores. Dolores eleifend",
+            "isRead": true,
+            "dateSent": '1540409426',
+        },
+        {
+            "id": "1y0Oqts35DQ",
+            "subject": "Eum recteque",
+            "content": "ase quidam epicurei vim ne, labores similique ei pri",
+            "isRead": false,
+            "dateSent": '1523365208'
+        },
+    
+    ]
+}
 
-    {
-        "id": "OXeMG8wNskc",
-        "subject": "Lorem ipsum dolor",
-        "content": "mi est eros convallis auctor arcu dapibus himenaeos",
-        "isRead": false,
-        "dateSent": "1530451826",
-    },
-    {
-        "id": "JYOJa2NpSCq",
-        "subject": 'disputando disputationi',
-        "content": " regione dolores. Sit ut choro dolores. Dolores eleifend",
-        "isRead": true,
-        "dateSent": '1540409426',
-    },
-    {
-        "id": "1y0Oqts35DQ",
-        "subject": "Eum recteque",
-        "content": "ase quidam epicurei vim ne, labores similique ei pri",
-        "isRead": false,
-        "dateSent": '1523365208'
-    },
-
-]
