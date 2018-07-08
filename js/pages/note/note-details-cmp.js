@@ -32,7 +32,7 @@ export default {
   data() {
     return {
         note:null, 
-        editedColor:'#EFAAC4'
+        editedColor:'#D4DCCD'
     };
   },
   created() {

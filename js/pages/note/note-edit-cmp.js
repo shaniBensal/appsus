@@ -5,8 +5,9 @@ export default {
 
     template: `
     <section>
-        <div :style="{backgroundColor: editedNote.backgroundColor}">
-        <form class="noOutline note-edit flex">
+    <div :style="{backgroundColor: editedNote.backgroundColor}" class="note-edit flex column align-center">
+
+    <form class="noOutline flex column align-center">
         <input type="color" v-model= "editedNote.backgroundColor">
                 Title: <input type="text" v-model="editedNote.title">
                 
@@ -18,20 +19,27 @@ export default {
             <note-bullets v-bind:note="editedNote"></note-bullets>
         </div> 
 
-        <div v-if= "editedNote.type ==='img'" class="newImg">
-                    <img class="main-photo" v-bind:src="editedNote.data">
-            <div class="flex">
-                <div v-for="(image,idx) in images">
-            <img class ="thumb-photo" v-bind:src="image" @click="switchMainImg(idx)">        
+        <div v-if= "editedNote.type ==='img'" class="flex">
+        <div class="flex column">
+            <div>
+                <div v-for="(image,idx) in images" class="flex column">
+                <img class ="thumb-photo" v-bind:src="image" @click="switchMainImg(idx)">        
                 </div>
-        enter another URL: <input v-model ="editedNote.data"> 
-            </div>
-        <button type="submit" @click.prevent="saveNote">Save</button>
-                <button @click="back"> Back </button>
-        </div>
+                </div>
+            
+                <div>   
+                    enter another URL: <input v-model ="editedNote.data"> 
+                </div>
+                </div>
+                </div>
                 
-            </form>
-</div>
+                <img v-bind:src="editedNote.data">
+                <div class=" bottom-btn flex space-between">
+                    <button @click="back"><i class="fas fa-arrow-left"></i></button>
+                    <button type="submit" @click.prevent="saveNote">Save</button>
+                </div> 
+    </div>
+    </form>
     </section>
     `,
     data() {

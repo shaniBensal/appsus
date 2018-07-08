@@ -13,7 +13,6 @@ export default {
                    <p class="subject">{{email.subject}}</p>
                    <p class="content">{{contentSummery}}...</p>
            
-        
                    <p class="hour">{{hour}}</p>
              </div>
      </router-link>

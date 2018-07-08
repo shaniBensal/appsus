@@ -22,7 +22,7 @@ body {
 }
 
 img {
-    width: 100%;
+    width: 70%;
     height: auto;
 }
 
@@ -49,8 +49,9 @@ a {
    color: #9E4770;
 }
 
-
-
+input{
+    width: fit-content;
+}
 /* Helpers */
 
 .container {
@@ -64,6 +65,7 @@ a {
     margin: 0;
     padding: 0;
 }
+
 
 /* flex */
 .flex {
@@ -270,6 +272,7 @@ button{
     width: fit-content;
     border: none;
     padding: 5px;
+    margin: 5px;
 }
 
 button:hover{
@@ -292,12 +295,9 @@ ul{
 
 /* notes */
  .thumb-photo{
-    width: 50px;
+    width: 80px;
+    margin: 10px;
     cursor: pointer;
-}
-
-.note-edit{
-    height: 100vh;
 }
 
 .note-app{
@@ -317,7 +317,7 @@ ul{
     font-size: 3.3em;
 }
 
-i{
+.note-details i{
     cursor: pointer;
     font-size: 2em;
     color: #000000;
@@ -328,18 +328,43 @@ i{
     width: 50%;
 }
 
-.newImg{
-    width: 100px;
-    height: 100px;
+.main-photo{
+    height: 30%;
+}
+
+.note-edit{
+    height: 100%;
+    text-align: center;
+    padding: 30px;
+}
+
+.noOutline{
+    border: 1px solid;
+    width: max-content;
+    padding: 15px;
 }
 
 .noOutline input{
     border: none;
     outline: none;
+    align-self: center;
+    border: 1px solid black;
+    width: max-content;
+    padding: 10px;
+
 }
 
 .noOutline input:focus{
     outline: none;
+}
+
+.bullets{
+    margin: 10px 0px;
+}
+
+input[type="color"]{
+    width: 60px;
+    margin: 10px 0px;
 }
 
 .squreBullets{
@@ -358,7 +383,7 @@ li.list {
     text-decoration:none;
     color:#000000;
     display:block;
-    width:10em;
+    width:14em;
     margin: 10px;
     padding:1em;
     border: #000000 solid 1px;
@@ -377,9 +402,13 @@ li.list {
   .un-pin {
       opacity: 1;
   }
+  .buttons-top{
+      margin: 10px 0px;
+  }
+
 
   .note-filter{
-      margin: 1em 0em;
+      padding: 7px;
   }
 
   .note-content{
@@ -399,6 +428,10 @@ li.list {
   .note-list-display{
     padding: 10px 0px;
     font-size: 1.5em;
+  }
+  .bottom-btn{
+    width: 100%;
+    justify-content: space-between;
   }
  
   @media (max-width: 440px) {
@@ -442,6 +475,14 @@ li.list {
     a .open {
         transform: translate(100%, 0);
         transition: all .8s;
+    }
+
+    .noOutline{
+        width: 70vw;
+    }
+
+    .noOutline input[type="text"]{
+        width: 70%;
     }
    
 
