@@ -9,13 +9,11 @@ export default {
     <button @click="addBullet">+</button>
     
      <ul>     
-            <div v-for="(listBullet, idx) in note.data" class="noOutline">           
+            <div v-for="(listBullet, idx) in note.data">           
                 <li class ="clean-list bullets">      
                 <input type="checkbox" @click="changeNoteMark('notSelected',idx)">  
                 <input class="bullets" type="text" v-model="note.data[idx]">
-                <button v-if="idx !== 0" @click.stop="changeNoteLoc(idx,-1)">up</button>
-                <button v-if="idx !== note.data.length-1" @click.stop ="changeNoteLoc(idx,1)">down</button>
-                <button @click.stop="deleteBullet(idx)">X</button>
+                <button @click.stop="deleteBullet(idx)"><i class="fas fa-trash-alt"></i></button>
                 </li>
             </div>
 
@@ -55,13 +53,6 @@ export default {
             if (this.note.data === null) this.note.data = ['first note'];
             else this.note.data.unshift(newBullet);
             noteService.saveNote(this.note)
-        },
-
-        changeNoteLoc(idx, incBy) {            
-            var temp = this.note.data[idx];           
-            this.note.data[idx] = this.note.data[idx + incBy];
-            this.note.data[idx + incBy] = temp;   
-            noteService.saveNote(this.note)         
         },
 
         deleteBullet(idx){

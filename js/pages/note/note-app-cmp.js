@@ -6,14 +6,14 @@ import noteDetails from '../../pages/note/note-details-cmp.js'
 
 export default {
     template: `
-    <section class="note-app flex column align-center">
-        <h1>Note App!</h1>
 
+    <section class="note-app flex column align-center">
+        <div class="flex buttons-top">
         <note-add v-if="displayMode === 'list'"></note-add>
         <note-filter v-if="displayMode === 'list'"
                      v-on:filtered="setFilter">
                     </note-filter>
-        
+        </div>
         <note-details v-if="displayMode === 'details'" 
                      v-bind:note="selectedNote" 
                      v-on:back="setSelectedNote(null)">

@@ -11,7 +11,7 @@ export default {
             <i v-if ="note.pinNote" class="fas fa-thumbtack un-pin"></i>
         <i v-if="!note.pinNote" class="fas fa-thumbtack pin"></i>
     </button>
-        <button class= "delete-btn" v-on:click.stop="deleteNote(idx)">X</button>
+        <button class= "delete-btn" v-on:click.stop="deleteNote(idx)"><i class="fas fa-trash-alt"></i></button>
             <note-preview v-bind:note="note" v-on:click.native="selectedNote(note)">
             </note-preview>
             </li>
