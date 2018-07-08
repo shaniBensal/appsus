@@ -2,12 +2,22 @@ export default {
     template: `  
     <section>
     <nav class="nav-bar-main flex space-around" :class="{ open: display }">
-			<router-link exact to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-            <router-link to="/note">Keep</router-link>
-            <router-link to="/email">Mail</router-link>
+        <ul class="flex align-center clean-list">
+            <li>
+                <router-link exact to="/">Home</router-link>
+            </li>
+            <li>
+                <router-link to="/about">About</router-link>
+            </li>
+            <li>
+                 <router-link to="/note">Keep</router-link>
+            </li>
+            <li>
+                <router-link to="/email">Mail</router-link>
+            </li>
+         </ul>
     </nav>    
-    <div class="hamburger" @click="display = !display"></div> 
+    <div class="hamburger" @click="display = !display" :class="{ exit: display }"></div> 
     
     </section>
     `,
@@ -18,12 +28,11 @@ export default {
         }
     },
 
-    created() {},
+    created() { },
     computed: {},
     methods: {
-        toggleMenu(){
-            if(this.display === open) this.display = close;
-            else this.display = open;
+        toggleMenu() {
+            this.display = ! this.display
         }
     },
     components: {}

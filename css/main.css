@@ -31,11 +31,21 @@ a {
     /* color: #f0f0f0; */
 }
 
-.nav-bar-main a{
+.nav-bar-main li{
     font-size: 30px;
-    margin: 20px 0;
+    margin: 30px 20px;
     height: 50px;
     width: 100px;
+    color: white;
+    text-align: center;
+
+}
+
+.nav-bar-main a{
+    /* font-size: 30px;
+    margin: 20px 0;
+    height: 50px;
+    width: 100px; */
     color: white;
     text-align: center;
 }
@@ -131,8 +141,8 @@ header .main-menu a {
 .home-page li{
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    text-align: center;
+    width: 60%;
    
 }
 
@@ -140,6 +150,8 @@ header .main-menu a {
 
 .home-page img{
     width: 50%;
+    margin: 20px 0;
+    border-radius: 50%;
     transition: all 0.8s ease-in-out;
 }
 
@@ -401,10 +413,30 @@ li.list {
     font-size: 1.5em;
   }
  
-  @media (max-width: 440px) {
+  @media (max-width: 640px) {
+
+    .home-page h1 {
+        /* font-family: 'inco', 'Courier New', Courier, monospace; */
+        font-weight: normal;
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 20px;
+    }
+
+
+
+     .nav-bar-main li:first-child{
+   
+        margin: 80px 20px 20px 20px;
+       
+    
+    }
+    
   
     .hamburger{
-        padding-right: 10px;
+        cursor: pointer;
         top:0;
         right: 0;
         display: flex;
@@ -422,36 +454,35 @@ li.list {
     }
 
     .exit.hamburger::after{
-        content: "\2715";
+        content: '\2715';
         font-size: 30px;
     } 
 
     .nav-bar-main {
-        position: relative;
-        display: none;
+        /* position: relative;
+        display: none; */
     }
 
-    .open {
-        padding: 0;
-        display: block;
-        position: relative;
-        z-index: 2;
+
+    .nav-bar-main ul{
+        position: absolute;
+        flex-direction: column;
+        background-color: #6B717E;
         top: 0;
-    }
-
-    a .open {
-        transform: translate(100%, 0);
+        right: -140px;
         transition: all .8s;
-    }
-   
-
-    /* nav a:hover{
-        color: #9E4770;
+        /* transform: rotateY(90deg); */
+        opacity: 0;
+       
     }
 
-
-    .nav a { 
-        background: grey;
-    } */
+    .nav-bar-main.open ul{
+        z-index: 2;
+        top: 50;
+        right: 20px;
+        width: 90vw;
+        height: 100vh;
+        opacity: 0.9;
+    }
 
 }

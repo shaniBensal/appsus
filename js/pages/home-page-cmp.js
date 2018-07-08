@@ -6,17 +6,19 @@ export default {
         <h3>And let the magic begin!!</h3>
         <div class="links">
           <ul class="main flex align-center clean-list">
+          
             <li>
-                Save your thoughts
-                 <router-link exact to="/keep">
+                  <span>Save your thoughts</span> 
+                 <router-link  to="/note">
                      <img src="img/notes.png"/>
                      
                  </router-link>
             </li>
+         
             <li>
-                Manage Your Emails
+                 <span> Manage Your Emails</span>
                  <router-link to="/email">
-                      <img src="img/mail.jpg"/>
+                      <img src="img/email.png"/>
                      
                   </router-link>
                   </li>

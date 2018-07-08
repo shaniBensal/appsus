@@ -11,7 +11,9 @@ export default {
  
     <div class="progress" :style="'width:100%;background:#E2E2E2;border: 1px solid black'">
          <div class="bar" :style="'height:15px;background:#9E4770;width:' + progress + '%'"></div>
+   
     </div>
+    {{progress}}% read
   </div>
 
         

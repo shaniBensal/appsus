@@ -141,25 +141,34 @@ function createEmails() {
 
         {
             "id": "OXeMG8wNskc",
-            "subject": "Lorem ipsum dolor",
-            "content": "mi est eros convallis auctor arcu dapibus himenaeos",
+            "subject": "Delivery is on its way!",
+            "content": " Verify your e-mail to finish signing up for Avocode,Thank you for choosing Avocod",
             "isRead": false,
             "dateSent": "1530451826",
         },
         {
             "id": "JYOJa2NpSCq",
-            "subject": 'disputando disputationi',
-            "content": " regione dolores. Sit ut choro dolores. Dolores eleifend",
+            "subject": 'Please confirm your account password',
+            "content": " The funds will be transferred when the merchant processes your payment. Any funds in your PayPal balance at that time will be used prior to any other payment source.Thank you for using PayPal. To see the full transaction details, log in to your PayPal account",	
             "isRead": true,
             "dateSent": '1540409426',
         },
         {
             "id": "1y0Oqts35DQ",
-            "subject": "Eum recteque",
-            "content": "ase quidam epicurei vim ne, labores similique ei pri",
+            "subject": "billing address confirmation",
+            "content": "Dear Shiran, Thank you for shopping with PANDORA Jewelry,We received your order PND02688204 You will receive an additional confirmation email with your order details shortly.  Need Help?  Contact our PANDORA Jewelry Customer Care team and we will be happy to assist!", 
             "isRead": false,
             "dateSent": '1523365208'
         },
+
+        {
+            "id": "1y23q4a35D1",
+            "subject": "greetings from beyonce",
+            "content": "good luck with the sprint!",
+            "isRead": false,
+            "dateSent": '1523365208'
+        },
+    
     
     ]
 }
