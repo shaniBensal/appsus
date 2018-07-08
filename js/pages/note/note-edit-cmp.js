@@ -11,7 +11,7 @@ export default {
                 Title: <input type="text" v-model="editedNote.title">
                 
             <div v-if="editedNote.type ==='txt'">
-                hello <textarea v-model="editedNote.data"></textarea>
+                 <textarea v-model="editedNote.data"></textarea>
             </div>
 
         <div v-if= "editedNote.type ==='list'">
@@ -31,8 +31,7 @@ export default {
                 <button type="submit" @click.prevent="saveNote">Save</button>
                 <button @click="back"> Back </button>
             </form>
-        </div>
-        
+</div>
     </section>
     `,
     data() {
@@ -47,7 +46,7 @@ export default {
     mounted() { },
     computed: {
         myStyle: function () {
-                backgroundColor: this.editedNote.backgroundColor,
+            backgroundColor: this.editedNote.backgroundColor,
                 saveNote()
         }
     },
@@ -64,12 +63,11 @@ export default {
                     })
             }
         },
-
         saveNote() {
             if (this.editedNote.type === 'img') {
                 noteService.addNewImage(this.editedNote.data)
             }
-            noteService.saveNote(this.editedNote)
+                noteService.saveNote(this.editedNote)
                 .then(savedNote => {
                     this.$router.push('/note');
                 })
@@ -80,13 +78,12 @@ export default {
         },
 
         back() {
-            if (this.$route.params !== 'edit/text' &&
-                this.$route.params !== 'edit/image' &&
-                this.$route.params !== 'edit/list') {
-                this.$router.push('/note/' + this.editedNote.id);
-            } else this.$router.push('/note/');
+            if (this.$route.params !== 'note/edit/text' &&
+                this.$route.params !== 'note/edit/image' &&
+                this.$route.params !== 'note/edit/list') {
+                this.$router.push('/note/');
+            } else this.$router.push('/note');
         }
-
     },
     components: {
         noteBullets
