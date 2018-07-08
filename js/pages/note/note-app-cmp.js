@@ -12,7 +12,6 @@ export default {
         <note-add v-if="displayMode === 'list'"></note-add>
         <note-filter v-if="displayMode === 'list'"
                      v-on:filtered="setFilter">
-                    
                     </note-filter>
         
         <note-details v-if="displayMode === 'details'" 
@@ -23,9 +22,10 @@ export default {
         <note-list v-if="displayMode === 'list'"
                    v-bind:notes="notesToShow" 
                    v-on:delete-note="deleteNote"
-                   v-on:select-note="setSelectedNote">
+                   v-on:select-note="setSelectedNote"
+                   v-on:pin-note="pinNote">
+                   
         </note-list>
-
     </section>
     `,
     data() {
@@ -67,8 +67,19 @@ export default {
 
         setFilter(filterTitle) {
             this.filter = filterTitle;
+        },
+
+        pinNote(pinIdx){
+            noteService.pinStatus(pinIdx)
+            .then(notes =>
+                noteService.query()
+                .then(notes => {
+                    this.notes = notes;
+                })
+            )
         }
     },
+
     components: {
         noteList,
         noteAdd,

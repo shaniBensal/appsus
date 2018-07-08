@@ -21,8 +21,30 @@ function emptyNote() {
         type: null,
         title: null,
         data: null,
-        backgroundColor:'white'
+        backgroundColor: 'white'
     }
+}
+
+function pinStatus(noteIdx) {
+    if (notes[noteIdx].pinNote) unPinNote(noteIdx);
+    else pinNote(noteIdx);
+    utils.saveToStorage('NOTES', notes);
+    return Promise.resolve(notes);
+
+}
+
+function pinNote(pinIdx) {
+    var noteToPin;
+    notes[pinIdx].pinNote = true;
+    noteToPin = notes.splice(pinIdx, 1);
+    notes = noteToPin.concat(notes);
+}
+
+function unPinNote(pinIdx) {
+    var noteToPin;
+    notes[pinIdx].pinNote = false;
+    noteToPin = notes.splice(pinIdx, 1);
+    notes = notes.concat(noteToPin);
 }
 
 function saveNote(note) {
@@ -70,7 +92,7 @@ function getNoteById(noteId) {
 function notesToShow(filterBy) {
     var filterByToLower = filterBy.toLowerCase();
     return notes.filter(note => {
-        var titleToLower = note.title.toLowerCase(); 
+        var titleToLower = note.title.toLowerCase();
         return titleToLower.includes(filterBy)
     })
 }
@@ -81,7 +103,8 @@ var notes = [
         type: 'txt',
         title: 'My first text note',
         data: 'Vue is the Best',
-        backgroundColor:'white'
+        backgroundColor: 'white',
+        pinNote: false
 
     },
     {
@@ -90,7 +113,8 @@ var notes = [
         title: 'Things To-Do',
         data: ['go shopping', 'watch some movie', 'sleep'],
         dataMarked: [],
-        backgroundColor:'white'
+        backgroundColor: 'white',
+        pinNote: false
 
     },
     {
@@ -98,7 +122,8 @@ var notes = [
         type: 'img',
         title: 'How I feel now',
         data: 'http://coding-academy.org/books-photos/17.jpg',
-        backgroundColor:'white'
+        backgroundColor: 'white',
+        pinNote: false
     }
 ]
 
@@ -111,5 +136,8 @@ export default {
     emptyNote,
     images,
     addNewImage,
-    notesToShow
+    notesToShow,
+    pinNote,
+    pinStatus,
+    unPinNote
 }

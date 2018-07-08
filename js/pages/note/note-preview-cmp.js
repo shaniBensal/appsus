@@ -6,22 +6,22 @@ export default {
     <router-link :to="'/note/'+note.id"> 
     <div :style="{backgroundColor: note.backgroundColor}">
     {{note.title}}
-        <li v-if="note.type ==='txt'">
+        <div v-if="note.type ==='txt'">
             {{note.data}}
-        </li>
+        </div>
 
-        <li v-if= "note.type ==='list'">
+        <div v-if= "note.type ==='list'">
             <ul>     
             <div v-for="(listBullet, idx) in note.data">           
                 <li class="squreBullets">{{listBullet}}</li>
             </div>
             </ul>
-        </li> 
+        </div> 
         
 
-        <li v-if= "note.type ==='img'">
+        <div v-if= "note.type ==='img'">
         <img class="thumb-photo" v-bind:src="note.data">
-        </li>
+        </div>
 </div>
         
     </router-link>
