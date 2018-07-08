@@ -103,7 +103,7 @@ var notes = [
         type: 'txt',
         title: 'My first text note',
         data: 'Vue is the Best',
-        backgroundColor: 'white',
+        backgroundColor: '#EFAAC4',
         pinNote: false
 
     },
@@ -113,7 +113,7 @@ var notes = [
         title: 'Things To-Do',
         data: ['go shopping', 'watch some movie', 'sleep'],
         dataMarked: [],
-        backgroundColor: 'white',
+        backgroundColor: '#EFAAC4',
         pinNote: false
 
     },
@@ -122,7 +122,7 @@ var notes = [
         type: 'img',
         title: 'How I feel now',
         data: 'http://coding-academy.org/books-photos/17.jpg',
-        backgroundColor: 'white',
+        backgroundColor: '#EFAAC4',
         pinNote: false
     }
 ]

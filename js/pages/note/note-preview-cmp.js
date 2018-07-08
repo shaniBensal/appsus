@@ -2,24 +2,24 @@ export default {
     props: ['note'],
 
     template: `
-    <section class="note-prev clean-list">
+    <section class="clean-list">
     <router-link :to="'/note/'+note.id"> 
-    <div :style="{backgroundColor: note.backgroundColor}">
+    <div :style="{backgroundColor: note.backgroundColor}" class="note-prev">
     {{note.title}}
-        <div v-if="note.type ==='txt'">
+        <div v-if="note.type ==='txt'" class="note-content">
             {{note.data}}
         </div>
 
-        <div v-if= "note.type ==='list'">
+        <div v-if= "note.type ==='list'" >
             <ul>     
-            <div v-for="(listBullet, idx) in note.data">           
+            <div v-for="(listBullet, idx) in note.data" class="note-content">           
                 <li class="squreBullets">{{listBullet}}</li>
             </div>
             </ul>
         </div> 
         
 
-        <div v-if= "note.type ==='img'">
+        <div v-if= "note.type ==='img'" class="note-content">
         <img class="thumb-photo" v-bind:src="note.data">
         </div>
 </div>

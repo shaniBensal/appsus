@@ -1,6 +1,12 @@
 
 .email-app{
     color: black;
+<<<<<<< HEAD
+=======
+    /* background-color: white; */
+    /* display: flex;
+    justify-content: space-around; */
+>>>>>>> 81b135d423e102f27c4328753a41591e9e57ce14
 }
 
 .email-app a{
